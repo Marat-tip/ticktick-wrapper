@@ -77,6 +77,21 @@ const assertLogin = function _assertLoginMiddleware() {
   throw new NotLoggedInError();
 };
 
+const logout = async function _logout() {
+  const options = {
+    method: 'GET',
+    uri: `${conn.baseUri}/user/signout`,
+    json: true,
+  };
+  try {
+    conn.request(options);
+  } catch (err) {
+    const { body } = err.response;
+    throw new Error('Error while logout',
+      body.errorId, body.errorCode, body.errorMessage);
+  }
+};
+
 /**
  * Executes a login operation via e-mail, using an e-mail and a password.
  * @private
@@ -149,6 +164,7 @@ module.exports = {
   loginGoogle,
   loginTwitter,
   assertLogin,
+  logout,
   errors: {
     NotLoggedInError,
     UnavailableLoginProviderError,

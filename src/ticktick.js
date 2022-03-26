@@ -96,6 +96,10 @@ class TickTick {
     }
   }
 
+  async logout() {
+    await auth.logout();
+  }
+
   /**
    * Stores local information about the authenticated user
    * @private
@@ -127,13 +131,13 @@ class TickTick {
    * Reminder-related properties
    */
   /**
-    * Creates a reminder object to be used when creating a {@link Task}. The reminder
-    * will go off at {quantity} {units} before the date set for the {@link Task}.
-    * If quantity equals to 0, an instant reminder will be returned
-    * @param {Number} quantity - Quantity of unit.
-    * @param {Reminder.TimeUnit} unit - Unit of time
-    * @returns {Reminder} Reminder object that can be used to create a {@link Task}.
-    */
+   * Creates a reminder object to be used when creating a {@link Task}. The reminder
+   * will go off at {quantity} {units} before the date set for the {@link Task}.
+   * If quantity equals to 0, an instant reminder will be returned
+   * @param {Number} quantity - Quantity of unit.
+   * @param {Reminder.TimeUnit} unit - Unit of time
+   * @returns {Reminder} Reminder object that can be used to create a {@link Task}.
+   */
   createReminder(quantity, unit) {
     return new Reminder(quantity, unit);
   }

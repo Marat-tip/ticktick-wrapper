@@ -50,6 +50,7 @@ function Task(properties) {
   this.projectId = properties.projectId || properties.listId; // || inbox
   this.listId = properties.projectId || properties.listId; // || inbox
   this.repeatFlag = properties.repeatFlag;
+  this.createdAt = properties.createdTime;
 }
 
 /**
